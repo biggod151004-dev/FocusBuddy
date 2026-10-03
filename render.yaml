@@ -1,0 +1,7 @@
+﻿services:
+  - type: web
+    name: focusbuddy
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    autoDeploy: true
