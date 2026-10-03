@@ -1,7 +1,8 @@
-﻿services:
+services:
   - type: web
     name: focusbuddy
-    runtime: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    runtime: node
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    startCommand: node server.mjs
+    healthCheckPath: /healthz
     autoDeploy: true

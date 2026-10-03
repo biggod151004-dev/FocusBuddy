@@ -132,3 +132,13 @@ Open Settings in a WebGPU-compatible browser, enable **On-device AI nudges**, th
 4. Return to focus. To show session completion quickly, use a short focus duration or wait for the timer; add a brief reflection and answer the phone check-in.
 5. Open **Progress** to show the story, totals, and seven-day chart. For a fuller chart, use **Settings → Load demo data**.
 6. Show **Install app** and explain HTTPS/Android browser installation. In Settings, mention local storage and optional browser-local Qwen inference.
+
+## Deployment on Render
+
+This repository includes `render.yaml` for a Node web service that serves the built Vite site. Connect the GitHub repository in Render and use:
+
+- Build command: `pnpm install --frozen-lockfile && pnpm run build`
+- Start command: `node server.mjs`
+- Health check path: `/healthz`
+
+If creating the service manually, set the start command to `node server.mjs`; do not use a PHP command. Alternatively, deploy as a Render Static Site with the same build command and publish directory `dist`.

@@ -1,69 +1,41 @@
-# FocusBuddy: A Tiny AI Companion That Helps My Friend Start
+---
+title: FocusBuddy: A Tiny AI Companion That Helps My Friend Start
+published: false
+tags: devchallenge, weekendchallenge, hf26challenge
+---
 
-This is a submission for the Hacktoberfest Weekend Challenge: Build for a Friend.
+This is a submission for the [Hacktoberfest Weekend Challenge: Build for a Friend](https://dev.to/challenges/hacktoberfest-weekend-2026-10-01).
 
 ## What I Built
 
-I built FocusBuddy for a friend who wants to study and work but finds it hard to begin when scrolling is always one tap away. I chose this because the starting moment is a real, everyday friction point, and I wanted to build something small that could help without blaming him or pretending a website can control his phone.
+I built FocusBuddy for a friend who wants to study and work but finds it hard to start when scrolling is always one tap away. I chose this problem because the first few minutes of a task can feel like the hardest part, and I wanted to make those minutes feel easier without blaming him or pretending a website can control his phone.
 
-FocusBuddy makes it easier to begin with two minutes, gives optional supportive AI nudges, notices when its browser tab is left, offers a one-minute pause for an urge to scroll, and saves reflections as a visible story of progress.
+FocusBuddy lets him name a task and start with just two minutes. It can count when he leaves the FocusBuddy tab, pause for a 60-second scroll urge, encourage a phone-down moment, and save a short reflection after a session. A dashboard turns those sessions into a visible story of progress.
 
 ## Demo
 
-Live Demo: YOUR_DEPLOYED_URL
+Live Demo: YOUR_RENDER_URL (add the public Render URL after deployment)
 
-GitHub: YOUR_GITHUB_REPO_URL
+## Code
 
-## How It Works
-
-- **2-minute start:** name a task and make a small beginning.
-- **Pomodoro:** adjustable focus duration, countdown, pause, reset, and progress ring.
-- **Distraction counter:** counts when FocusBuddy's page becomes hidden using Page Visibility.
-- **Scroll urge timer:** pause and wait 60 seconds before deciding.
-- **Phone-down challenge:** a gentle prompt to place the phone farther away.
-- **AI nudge:** optional short encouragement from an open-weight Qwen model in a compatible browser.
-- **Reflection:** leave a short note after a completed focus session.
-- **Dashboard:** view session history, totals, streak, and the last seven days.
-- **PWA:** install the web app and revisit its cached shell offline.
+GitHub: [biggod151004-dev/FocusBuddy](https://github.com/biggod151004-dev/FocusBuddy)
 
 ## How I Built It
 
-The app uses React, TypeScript, Vite, browser LocalStorage, a custom service worker, and the WebLLM runtime with Qwen2.5-0.5B-Instruct for optional in-browser inference. The model weights download from the model registry; the first download requires internet and WebGPU-compatible hardware/browser. If AI is disabled or unavailable, a short built-in nudge is used. No closed AI API is used.
+FocusBuddy is built with React, TypeScript, and Vite. It saves focus history and reflections in browser LocalStorage and uses a service worker for the app shell.
 
-## Why Open Innovation Matters
+The optional AI nudge uses the open-weight Qwen2.5-0.5B-Instruct model through WebLLM in a compatible browser. WebGPU is required by this implementation, and the model weights need to be downloaded the first time. If the model is disabled or unavailable, the app uses a short built-in nudge. No closed AI API is used.
 
-For a small personal tool, open-weight AI makes the nudge layer replaceable and open to experimentation. Developers can inspect and customize the prompt and provider, and a compatible device can run inference locally. Focus history stays in local browser storage; the app sends no task or reflection to an application server. Qwen weights are fetched from the configured registry, so this app does not claim that AI is fully offline on first use. An open, replaceable provider reduces dependence on a single proprietary AI API for the app's architecture.
+## Why Does Open Innovation Matter?
 
-## The Honest Part
+The AI provider is isolated behind a small `generateNudge(context)` function, so developers can inspect the prompt and replace the model. On compatible devices, inference happens in the browser. Focus history and reflections stay in local browser storage and are not sent to an application server. The model weights are fetched from the configured model registry, so first-time AI setup needs internet; the app does not claim fully offline AI.
 
-FocusBuddy cannot block other phone apps. It doesn't pretend to. Instead, it helps the user notice distractions, delay the urge to scroll, and make starting easier.
+Using an open-weight model makes it practical to experiment with the nudge style and local inference without making the product depend on one proprietary AI API.
 
-The browser can only count when the FocusBuddy tab becomes hidden; it cannot inspect activity in other apps.
+## My Agent Session
 
-## My Friend's Feedback
-
-> "I handed it to my friend and asked what felt useful, what felt annoying, and whether the AI nudges felt natural."
-
-Actual feedback: [Add your friend's feedback here after asking.]
-
-What felt useful: [Add response]
-
-What felt annoying: [Add response]
-
-Did the nudges feel natural?: [Add response]
-
-## Open Source
-
-FocusBuddy is available under the MIT License. Contributions are welcome: open an issue to discuss an idea, then submit a pull request with a focused change and a short explanation.
-
-## What I Learned
-
-- Building for one real person helps keep the feature set grounded.
-- A gentle start can be more useful than another strict productivity score.
-- Local-first storage makes a private reflection feel appropriate for a personal tool.
-- Open-weight AI is useful when the provider boundary and runtime requirements are made clear.
-- A PWA can make a small web tool easier to revisit, while offline behavior still needs honest limits.
+[Optional: add a DevRelay session link or embed after saving the session.]
 
 ## Prize Categories
 
-[Add the applicable partner categories here.]
+[Add the applicable partner categories here, or remove this section.]
