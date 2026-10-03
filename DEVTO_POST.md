@@ -1,6 +1,6 @@
 ---
 title: FocusBuddy: A Tiny AI Companion That Helps My Friend Start
-published: false
+published: true
 tags: devchallenge, weekendchallenge, hf26challenge
 ---
 
