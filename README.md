@@ -108,18 +108,17 @@ git push -u origin main
 
 This repository has no secrets or required environment variables; `.env.example` is not needed.
 
-## Deployment (Vercel)
+## Deployment (Render)
 
-The Vite app builds to `dist/` and uses relative asset paths, so it can deploy at a project URL without an extra base-path setting.
+**Live demo:** [focusbuddy-1-ykyk.onrender.com](https://focusbuddy-1-ykyk.onrender.com)
 
-1. Push the repository to GitHub using the commands above.
-2. Sign in at [Vercel](https://vercel.com/) and choose **Add New → Project**.
-3. Import the FocusBuddy GitHub repository.
-4. Keep the detected Vite settings: build command `npm run build`, output directory `dist`.
-5. Select **Deploy**, then copy the public URL when the build completes.
+The site is published from the `main` branch of the GitHub repository. Render builds the Vite frontend and serves the output with the included Node server.
 
-The site should be served over HTTPS for installation. The deployed page can work without a backend.
+- Build command: `pnpm install --frozen-lockfile && pnpm run build`
+- Start command: `node server.mjs`
+- Health check path: `/healthz`
 
+If configuring the service manually, use these commands and do not set a PHP start command. With auto-deploy enabled, new commits to `main` are deployed automatically. Alternatively, a Render Static Site can use the same build command and publish directory `dist`.
 ## Test the AI feature
 
 Open Settings in a WebGPU-compatible browser, enable **On-device AI nudges**, then start a two-minute session. The first model initialization reports download progress on the AI label and may take time. The nudge is generated locally. To verify fallback behavior, disable the setting or use a browser without WebGPU; the timer still gets a built-in nudge.
@@ -132,13 +131,3 @@ Open Settings in a WebGPU-compatible browser, enable **On-device AI nudges**, th
 4. Return to focus. To show session completion quickly, use a short focus duration or wait for the timer; add a brief reflection and answer the phone check-in.
 5. Open **Progress** to show the story, totals, and seven-day chart. For a fuller chart, use **Settings → Load demo data**.
 6. Show **Install app** and explain HTTPS/Android browser installation. In Settings, mention local storage and optional browser-local Qwen inference.
-
-## Deployment on Render
-
-This repository includes `render.yaml` for a Node web service that serves the built Vite site. Connect the GitHub repository in Render and use:
-
-- Build command: `pnpm install --frozen-lockfile && pnpm run build`
-- Start command: `node server.mjs`
-- Health check path: `/healthz`
-
-If creating the service manually, set the start command to `node server.mjs`; do not use a PHP command. Alternatively, deploy as a Render Static Site with the same build command and publish directory `dist`.

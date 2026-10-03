@@ -14,7 +14,7 @@ FocusBuddy lets him name a task and start with just two minutes. It can count wh
 
 ## Demo
 
-Live Demo: YOUR_RENDER_URL (add the public Render URL after deployment)
+Live Demo: https://focusbuddy-1-ykyk.onrender.com
 
 ## Code
 
